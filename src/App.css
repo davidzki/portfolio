@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+body {
+  font-family: "Press Start 2P", cursive;
+  background-color: white;
   color: white;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(16rem);
+  opacity: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.bg-circle {
+  width: 66vw;
+  height: 66vh;
+  position: absolute;
+  border-radius: 100%;
+  transition: all 5s ease-in-out;
+  opacity: 0.75;
+}
+
+#red {
+  background-color: red;
+}
+
+#pink {
+  background-color: pink;
+}
+
+#green {
+  background-color: green;
+}
+#blue {
+  background-color: blue;
+}
+
+#text {
+  z-index: 9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#social {
+  margin-top: 2rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#social a {
+  color: #000;
+  text-decoration: none;
+}
+
+#social a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 992px) {
+  #social {
+    flex-direction: column;
+    gap: 16px;
   }
 }
