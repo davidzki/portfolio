@@ -9,11 +9,11 @@ function App() {
 
 
   const randomizeX = () => {
-    return Math.floor(Math.random() * viewport.width) + 1
+    return Math.floor(Math.random() * viewport.width)
   }
 
   const randomizeY = () => {
-    return Math.floor(Math.random() * viewport.height) + 1
+    return Math.floor(Math.random() * viewport.height)
   }
 
 
@@ -44,7 +44,7 @@ function App() {
     document.getElementById("green")!.style.right = randomizeX().toString() + "px"
     document.getElementById("green")!.style.top = randomizeY().toString() + "px"
 
-  }, 1000)
+  }, 5000)
 
 
 

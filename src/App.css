@@ -49,8 +49,9 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
+  font-size: 3rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 #social {
@@ -70,6 +71,11 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+  #text {
+    white-space: normal;
+    font-size: 2rem;
+  }
+
   #social {
     flex-direction: column;
     gap: 16px;
