@@ -1,11 +1,15 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
+import ReactGA from 'react-ga';
+const TRACKING_ID = "UA-251820623-1";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
 
 
   const [viewport, setViewport] = useState({ width: 0, height: 0 })
+  const [showContact, setShowContact] = useState(false)
 
 
   const randomizeX = () => {
@@ -56,11 +60,14 @@ function App() {
       <div id="red" className="bg-circle" ></div>
       <div id="overlay"></div>
       <div id="text">david eriksson
+
+
         <div id="social">
-          <a href="https://github.com/davidzki" target="_blank" rel="noreferrer noopener">github</a>
           <a href="https://www.linkedin.com/in/david-eriksson-468019153/" target="_blank" rel="noreferrer noopener">linkedin</a>
           <a href="mailto:d@videriksson.com">email</a>
         </div>
+
+
       </div>
 
 

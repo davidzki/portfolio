@@ -54,11 +54,20 @@ body {
   white-space: nowrap;
 }
 
+#social-div {
+  margin-top: 2rem;
+  font-size: 1rem;
+  position: relative;
+}
+
 #social {
   margin-top: 2rem;
   font-size: 1rem;
   display: flex;
   justify-content: space-evenly;
+  position: absolute;
+    flex-direction: column;
+    gap: 16px;
 }
 
 #social a {
@@ -74,10 +83,5 @@ body {
   #text {
     white-space: normal;
     font-size: 2rem;
-  }
-
-  #social {
-    flex-direction: column;
-    gap: 16px;
   }
 }
