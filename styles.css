@@ -70,8 +70,8 @@ body {
 }
 
 .scores-list {
-  margin: 0.7rem 0 0 1rem;
-  padding-left: 2rem;
+  margin: 0.7rem 0 0 0;
+  padding-left: 0;
   font-family: "Press Start 2P", monospace;
   font-size: 0.78rem;
   line-height: 1.35;
@@ -81,7 +81,22 @@ body {
 }
 
 .scores-list li {
-  margin: 0.24rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  padding: 0;
+}
+
+.score-name {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.score-value {
+  text-align: right;
+  margin-left: auto;
 }
 
 .result-line,
@@ -89,7 +104,64 @@ body {
   margin: 0;
   color: #000;
   text-align: center;
+}
+
+.result-line {
+  font-size: 0.78rem;
+}
+
+.rank-line {
   font-size: 0.58rem;
+}
+
+.score-form {
+  display: grid;
+  gap: 0.45rem;
+  justify-items: center;
+}
+
+.score-label {
+  color: #000;
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+.score-row {
+  display: flex;
+  gap: 0.42rem;
+  align-items: center;
+}
+
+.score-input {
+  width: min(220px, 56vw);
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.54rem;
+  padding: 0.45rem 0.5rem;
+}
+
+.score-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #000;
+}
+
+.score-submit {
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.48rem;
+  padding: 0.5rem 0.6rem;
+  cursor: pointer;
+}
+
+.score-submit:disabled {
+  opacity: 0.65;
+  cursor: default;
 }
 
 .play-again {

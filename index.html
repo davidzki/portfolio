@@ -35,6 +35,23 @@
       <p id="result-line" class="result-line"></p>
       <p id="rank-line" class="rank-line"></p>
 
+      <form id="score-form" class="score-form hidden" autocomplete="off">
+        <div class="score-row">
+          <input
+            id="score-name"
+            class="score-input"
+            name="score-name"
+            type="text"
+            maxlength="12"
+            autocomplete="nickname"
+            spellcheck="false"
+            placeholder="anon"
+            aria-label="name"
+          />
+          <button id="score-submit" class="score-submit" type="submit">submit</button>
+        </div>
+      </form>
+
       <button id="play-again" class="play-again" type="button">play again</button>
       <p class="contact-text">or contact me here</p>
 
