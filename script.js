@@ -9,6 +9,7 @@ const rankLineEl = document.getElementById("rank-line");
 const scoreFormEl = document.getElementById("score-form");
 const scoreNameEl = document.getElementById("score-name");
 const scoreSubmitEl = document.getElementById("score-submit");
+const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
 
 const SUPABASE_URL = "https://jntwuuukbagxaoobvmni.supabase.co";
 const SUPABASE_ANON_KEY =
@@ -228,9 +229,9 @@ function setupWave() {
   comboPopups.length = 0;
   swarm.dir = 1;
   swarm.shootTick = 0;
-  swarm.speed = 1.55;
-  swarm.drop = 18;
-  swarm.shootRate = 22;
+  swarm.speed = isCoarsePointer ? 1.05 : 1.55;
+  swarm.drop = isCoarsePointer ? 14 : 18;
+  swarm.shootRate = isCoarsePointer ? 28 : 22;
 
   player.x = canvas.width * 0.5 - player.w * 0.5;
   player.y = canvas.height - 42;
@@ -544,9 +545,9 @@ function update() {
         const shooters = [...byColumn.values()];
         if (shooters.length > 0) {
           const shooter = shooters[Math.floor(Math.random() * shooters.length)];
-          const bulletSpeed = slowFieldFrames > 0 ? 3.1 : 5.2;
+          const bulletSpeed = slowFieldFrames > 0 ? (isCoarsePointer ? 2.2 : 3.1) : isCoarsePointer ? 3.7 : 5.2;
           enemyBullets.push({ x: shooter.x + shooter.s * 0.5 - 2, y: shooter.y + shooter.s, w: 4, h: 10, vy: bulletSpeed });
-          if (shooters.length > 3 && Math.random() < 0.45) {
+          if (shooters.length > 3 && Math.random() < (isCoarsePointer ? 0.22 : 0.45)) {
             const second = shooters[Math.floor(Math.random() * shooters.length)];
             enemyBullets.push({
               x: second.x + second.s * 0.5 - 2,
@@ -638,10 +639,14 @@ function draw() {
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  const hudFont = isCoarsePointer ? 11 : 12;
+  const scoreFont = isCoarsePointer ? 13 : 16;
+  const comboBannerFont = isCoarsePointer ? 12 : 18;
+
   ctx.fillStyle = "#000";
-  ctx.font = "16px 'Press Start 2P'";
+  ctx.font = `${scoreFont}px 'Press Start 2P'`;
   ctx.fillText(`score ${score}`, 12, 26);
-  ctx.font = "12px 'Press Start 2P'";
+  ctx.font = `${hudFont}px 'Press Start 2P'`;
   ctx.fillText("lives", 12, 46);
   for (let i = 0; i < maxLives; i += 1) {
     drawHeart(82 + i * 18, 34, 2, i < lives);
@@ -664,11 +669,11 @@ function draw() {
 
   if (comboCount > 1 && comboFrames > 0) {
     ctx.fillStyle = "#d40000";
-    ctx.font = "18px 'Press Start 2P'";
+    ctx.font = `${comboBannerFont}px 'Press Start 2P'`;
     const comboTitle = `x${comboCount} COMBO`;
     const comboWidth = ctx.measureText(comboTitle).width;
-    ctx.fillText(comboTitle, (canvas.width - comboWidth) * 0.5, 38);
-    ctx.font = "12px 'Press Start 2P'";
+    ctx.fillText(comboTitle, (canvas.width - comboWidth) * 0.5, isCoarsePointer ? 34 : 38);
+    ctx.font = `${hudFont}px 'Press Start 2P'`;
     ctx.fillStyle = "#000";
   }
 
@@ -744,7 +749,7 @@ function draw() {
   });
 
   ctx.fillStyle = "#000";
-  const showShip = respawnInvuln <= 0 || Math.floor(respawnInvuln / 4) % 2 === 0;
+  const showShip = isCoarsePointer || respawnInvuln <= 0 || Math.floor(respawnInvuln / 4) % 2 === 0;
   if (showShip) {
     ctx.fillRect(player.x, player.y + 4, player.w, player.h - 4);
     ctx.fillRect(player.x + 17, player.y, 12, 5);
